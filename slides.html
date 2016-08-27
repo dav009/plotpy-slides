@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lightning Talk - plotting in Python</title>
+    <meta charset="utf-8">
+    <style>
+   @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+
+      .image-50 img {
+        width: 50%;
+      }
+
+      .image-30 img {
+        width: 30%;
+      }
+
+      blockquote {
+        border-left: 0.3em solid rgba(0,0,0,0.5);
+        padding: 0 15px;
+        font-style: italic;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 50%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 50%;
+        float: right;
+    
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+
+# Plotting in Python(the least painful way)
+David Przybilla 
+
+[github.com/dav009](https://github.com/dav009) 
+
+[@dav009](http://twitter.com/dav009) 
+
+[http://alejandro.pictures](http://alejandro.pictures/)
+
+---
+
+# Matplotlib
+
+![](images/pyplot_annotate.png)
+
+---
+
+# Matplotlib
+
+.image-50[![complex](images/matplotlib_complex.png)]
+
+---
+
+# Matplotlib
+
+after a few days....
+
+![](images/wtf.jpg)
+
+---
+# Matplotlib
+
+
+- I had to **re-read** the docs everytime
+
+- Very imperative: Ddfining **how** the plot is made not **what** is being plot
+
+- No defaults, I have to set:
+ - Labels
+ - Ticks
+ - Boundaries
+
+- Re-arrange(reformat) my data just to display it
+
+- Very little integration with common tools i.e: panda `dataframes`
+
+---
+
+# Getting spoiled... ❤️ ggplot
+
+So I got introduced to `ggplot` and `dplyr` in R.
+
+- Provides defaults (i.e: labels for axis)
+
+- Reformatting my data to plot it is minimal
+
+.image-50[![](images/yay.jpeg)]
+
+
+---
+
+# Mixing R & Python
+
+Use `rpy2` then you can use `ggplot` and `dplyr` from python
+
+
+### pros
+
+- all the power of ggpplot/dplyr 
+- Integration with pandas dataframes..
+
+### cons
+- Not straightforward to install
+- It feels a bit awkard to use R within python
+
+
+---
+
+# ggplot - [github.com/yhat/ggplot](https://github.com/yhat/ggplot)
+
+Mimics `ggplot` api but it is totally made in python
+
+.image-50[![](images/yhat_sample.png)]
+
+
+.left-column[
+### pros
+- All the ones from ggplot (nice api..)
+- Integration with other tools i.e: pandas..
+]
+.right-column[
+### cons
+- Some ggplot features are not available
+  - i.e: rotating
+
+]
+
+
+---
+
+# Altair - [github.com/ellisonbg/altair](https://github.com/ellisonbg/altair)
+
+> "declarative statistical visualization library for Python"
+
+Good for exploratory analysis
+
+.image-30[![](images/altair_sample.png)]
+
+.left-column[
+### pros
+- Simple API (similar to ggplot)
+- Exports to `vega` formats
+]
+
+.right-column[
+### cons
+- The API can be a bit limited 
+]
+
+
+
+---
+
+# Lightening - [lightning-viz.org](http://lightning-viz.org/)
+
+> "interactive data visualization"
+
+useful when dealing with:
+
+- Plots of data coming in `streams` (it plots in `"realtime"`)
+
+- Big datasets: you have a big dataset that you are exploring via spark for example. 
+
+I like to use `pyspark` + `lightening` to do data exploration
+
+
+.image-50[![](images/ligthening_sample.png)]
+
+
+---
+
+# Bokeh - [bokeh.pydata.org](http://bokeh.pydata.org)
+
+> "shiny for python"
+
+
+'plots' with interactivity:
+ 
+ - Allows to add UI components to change the visualization
+
+ - Complex interactions with data can be modeled( i.e: [brushing tool](https://demo.bokehplots.com/apps/movies))
+
+ .image-50[![](images/bokeh_sample.png)]
+
+
+---
+
+# Summary
+
+I added others I've heard of
+
+- [ggplot (yhat)](https://github.com/yhat/ggplot)
+  - https://github.com/yhat/ggplot
+
+
+- [Lightining](http://lightning-viz.org/)
+  - http://lightning-viz.org/ 
+
+- [Altair](https://github.com/ellisonbg/altair)
+  - https://github.com/ellisonbg/altair 
+
+- [Bokeh](http://bokeh.pydata.org/en/latest/)
+  - http://bokeh.pydata.org/en/latest/ 
+
+- [plotly](https://plot.ly/)
+  - https://plot.ly/ 
+
+- [Vispy](http://vispy.org/)
+  - http://vispy.org/ 
+
+
+
+    </textarea>
+    <script src="remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLanguage: 'python',
+        highlightStyle: 'monokai'}
+      );
+
+    </script>
+  </body>
+</html>
